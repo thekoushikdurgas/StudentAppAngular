@@ -1,1 +1,19 @@
-<p>app works!</p>
+<div class="app-container">
+    <app-header></app-header>
+    <form class="student-form" (ngSubmit)="onSubmit()">
+      <label>
+        First Name:
+        <input [(ngModel)]="newStudent.firstName" name="firstName" type="text" required />
+      </label>
+      <label>
+        Last Name:
+        <input [(ngModel)]="newStudent.lastName" name="lastName" type="text" required />
+      </label>
+      <label>
+        Email:
+        <input [(ngModel)]="newStudent.emailId" name="emailId" type="email" required />
+      </label>
+      <button type="submit">Add Student</button>
+    </form>
+  </div>
+  
