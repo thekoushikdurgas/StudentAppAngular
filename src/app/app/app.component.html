@@ -1,19 +1,31 @@
 <div class="app-container">
     <app-header></app-header>
-    <form class="student-form" (ngSubmit)="onSubmit()">
-      <label>
-        First Name:
-        <input [(ngModel)]="newStudent.firstName" name="firstName" type="text" required />
-      </label>
-      <label>
-        Last Name:
-        <input [(ngModel)]="newStudent.lastName" name="lastName" type="text" required />
-      </label>
-      <label>
-        Email:
-        <input [(ngModel)]="newStudent.emailId" name="emailId" type="email" required />
-      </label>
-      <button type="submit">Add Student</button>
-    </form>
+    <mat-card class="student-form">
+      <h2>Add Student</h2>
+      <form (ngSubmit)="onSubmit()">
+        <mat-form-field>
+          <input matInput placeholder="First Name" [(ngModel)]="newStudent.firstName" name="firstName" required />
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Last Name" [(ngModel)]="newStudent.lastName" name="lastName" required />
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput type="email" placeholder="Email" [(ngModel)]="newStudent.emailId" name="emailId" required />
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit">Add Student</button>
+      </form>
+    </mat-card>
+    
+    <div class="student-list">
+      <h2>Student List</h2>
+      <ul>
+        <li *ngFor="let student of students">
+          {{ student.firstName }} {{ student.lastName }} - {{ student.emailId }}
+          <button mat-icon-button color="warn" (click)="onDeleteStudent(student.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </li>
+      </ul>
+    </div>
   </div>
   
